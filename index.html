@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Page</title>
+    <style>
+        body {
+            background-image: url("/static/ibackground.jpg");
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            background-color: black;
+            color: white;
+            font-size: 24px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Wow! You can detect face emotions in 3 options</h1>
+        <div class="button-container">
+             <a href="/page1"><button>Live Detect</button></a>
+        </div>
+        <div class="button-container">
+            <a href="/page2"><button>Image Detect</button></a>
+        </div>
+        <div class="button-container">
+            <a href="/page3"><button>Video Detect</button></a>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="/page4"><button>Sentiment Analysis on FER2013</button></a>
+    </div>
+</body>
+</html>

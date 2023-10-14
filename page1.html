@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream Detection</title>
+    <style>
+        body {
+            background-image: url("/static/p1background.jpeg");
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+            background-color: #000000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .video-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            background-color: red;
+            color: black;
+            font-size: 14px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class = "Container">
+        <h1 class = "title">Live Stream Detection</h1>
+        <div class="video-container">
+            <img src="{{ url_for('video') }}" alt="Live Video Stream">
+        </div>
+        <div class="button-container">
+            <button id="quit-button" onclick="quitApp()">Exit</button>
+        </div>
+    </div>
+    <script>
+        let videoElement = document.getElementById('live-video-stream');
+        async function startVideo() {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            videoElement.srcObject = stream;
+        }
+        function stopVideo() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            videoElement.srcObject = null;
+        }
+        function quitApp() {
+            stopVideo();
+            // Handle any additional cleanup or exit operations
+        }
+        window.onload = function() {
+            startVideo();
+        };
+    </script>
+</body>
+</html>
+
+
